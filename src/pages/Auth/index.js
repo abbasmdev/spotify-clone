@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { spotifyLoginUrl } from "../../spotify";
 import styles from "./index.module.css";
 function Auth() {
+  const history = useHistory();
   const loginBtnClickHandler = () => {
     window.location.href = spotifyLoginUrl;
   };
@@ -18,7 +20,10 @@ function Auth() {
         initial[key_val[0]] = key_val[1];
         return initial;
       }, {});
-
+      const access_token = data.access_token;
+      const token_type = data.token_type;
+      const expires_in = data.expires_in;
+      if (!access_token || !token_type || !expires_in) history.replace("/auth");
       console.log(data);
     }
   }, []);
