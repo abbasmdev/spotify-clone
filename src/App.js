@@ -2,14 +2,18 @@ import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import styles from "./App.module.css";
-import { useSelector } from "react-redux";
-import { selectAuthAccessToken } from "./store/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAuthLoginDataFromStorage,
+  selectAuthAccessToken,
+} from "./store/auth/authSlice";
 import { useEffect } from "react";
 import { spotifyInstance } from "./spotify";
 
 function App() {
-  const authAccessToken = useSelector(selectAuthAccessToken);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const authAccessToken = useSelector(selectAuthAccessToken);
   useEffect(() => {
     if (authAccessToken) {
       spotifyInstance.setAccessToken(authAccessToken);
@@ -19,6 +23,10 @@ function App() {
       history.replace("/auth");
     }
   }, [authAccessToken, history]);
+
+  useEffect(() => {
+    dispatch(getAuthLoginDataFromStorage());
+  }, [dispatch]);
   return (
     <div className={styles.app}>
       <Switch>

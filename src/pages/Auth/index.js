@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { spotifyLoginUrl } from "../../spotify";
-import { authActions } from "../../store/auth/authSlice";
+import { setAuthAndStoreLoginData } from "../../store/auth/authSlice";
 import styles from "./index.module.css";
 function Auth() {
   const history = useHistory();
@@ -33,7 +33,7 @@ function Auth() {
         return;
       }
       dispatch(
-        authActions.setLoginData({ access_token, token_type, expires_in })
+        setAuthAndStoreLoginData({ access_token, token_type, expires_in })
       );
     }
   }, []);

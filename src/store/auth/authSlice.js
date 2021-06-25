@@ -1,4 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const setAuthAndStoreLoginData = createAsyncThunk(
+  "auth/setAuthAndStoreLoginData",
+  async ({ access_token, token_type, expires_in }) => {
+    const data = { access_token, token_type, expires_in };
+    localStorage.setItem("auth", JSON.stringify(data));
+    return data;
+  }
+);
+
+export const getAuthLoginDataFromStorage = createAsyncThunk(
+  "auth/getAuthLoginDataFromStorage",
+  async () => {
+    const strData = localStorage.getItem("auth");
+    const data = JSON.parse(strData);
+    if (!data) {
+      throw new Error("no auth");
+    }
+    return data;
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -18,6 +39,14 @@ const authSlice = createSlice({
       state.token_type = null;
       state.expires_in = null;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(setAuthAndStoreLoginData.fulfilled, (state, action) => {
+      authSlice.caseReducers.setLoginData(state, action);
+    });
+    builder.addCase(getAuthLoginDataFromStorage.fulfilled, (state, action) => {
+      authSlice.caseReducers.setLoginData(state, action);
+    });
   },
 });
 
