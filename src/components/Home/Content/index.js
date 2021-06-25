@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
-function Content() {
-  return <div>content</div>;
+function Content({ className }) {
+  return <div className={`${styles.container} ${className}`}>content</div>;
 }
 
 export default Content;

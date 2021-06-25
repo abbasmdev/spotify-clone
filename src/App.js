@@ -1,7 +1,6 @@
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
-import styles from "./App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthLoginDataFromStorage,
@@ -9,6 +8,7 @@ import {
 } from "./store/auth/authSlice";
 import { useEffect } from "react";
 import { spotifyInstance } from "./spotify";
+import styles from "./App.module.css";
 
 function App() {
   const history = useHistory();

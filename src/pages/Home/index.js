@@ -9,10 +9,10 @@ function Home() {
     console.log(spotifyInstance.getAccessToken());
   }, []);
   return (
-    <div>
-      <main>
-        <Sidebar />
-        <Content />
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <Sidebar className={styles.sidebar} />
+        <Content className={styles.content} />
       </main>
       <Footer />
     </div>
