@@ -29,9 +29,11 @@ function Sidebar({ className }) {
       <div className={styles.playListContainer}>
         <strong className={styles.playListTitle}>Playlists</strong>
         <hr />
-        {userPlayLists?.items?.map((item) => (
-          <PlayListItem key={item.id} text={item.name} />
-        ))}
+        <div className={styles.playListItems}>
+          {userPlayLists?.items?.map((item) => (
+            <PlayListItem key={item.id} text={item.name} />
+          ))}
+        </div>
       </div>
     </div>
   );

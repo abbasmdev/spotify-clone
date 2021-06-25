@@ -6,7 +6,7 @@
 }
 .main {
   flex: 1;
-
+  overflow: hidden;
   display: flex;
 }
 .main > .sidebar {
