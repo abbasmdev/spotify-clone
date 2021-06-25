@@ -12,6 +12,7 @@ export const spotifyAuthScopes = [
   "user-read-playback-state",
   "user-read-recently-played",
   "user-read-currently-playing",
+  "playlist-read-private",
 ];
 
 export const spotifyLoginUrl = `${spotifyAuthEndpoint}?client_id=${spotifyClientId}&redirect_uri=${spotifyRedirectUri}&scope=${spotifyAuthScopes.join(
