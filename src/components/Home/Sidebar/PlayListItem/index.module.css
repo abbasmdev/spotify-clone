@@ -1,0 +1,14 @@
+.container {
+  padding: 10px 0;
+  cursor: pointer;
+  display: flex;
+}
+.container:hover {
+  color: white;
+}
+.container > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}

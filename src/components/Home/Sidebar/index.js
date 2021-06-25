@@ -1,5 +1,6 @@
 import { Home, SearchOutlined, LibraryBooksOutlined } from "@material-ui/icons";
 import Option from "./Option";
+import PlayListItem from "./PlayListItem";
 import styles from "./index.module.css";
 function Sidebar({ className }) {
   return (
@@ -21,6 +22,13 @@ function Sidebar({ className }) {
           onClick={null}
           Icon={LibraryBooksOutlined}
         />
+      </div>
+      <div className={styles.playListContainer}>
+        <strong className={styles.playListTitle}>Playlists</strong>
+        <hr />
+        <PlayListItem text="Rock" />
+        <PlayListItem text="Rock" />
+        <PlayListItem text="Rock" />
       </div>
     </div>
   );

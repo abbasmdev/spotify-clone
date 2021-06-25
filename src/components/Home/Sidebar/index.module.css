@@ -13,3 +13,17 @@
 .logo > svg {
   max-width: 120px;
 }
+
+.playListContainer {
+  color: #9c9c9c;
+  padding-left: 10px;
+  margin-top: 40px;
+}
+.playListTitle {
+  margin-bottom: 5px;
+}
+
+.playListContainer > hr {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
