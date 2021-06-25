@@ -1,0 +1,21 @@
+.container {
+  margin: 5px 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+  color: #b3b3b3;
+  transition: all 250ms ease-in;
+}
+.container:hover .label {
+  color: white;
+}
+.container:hover svg {
+  color: white;
+}
+
+.container.active {
+  border-radius: 10px;
+  background-color: #282828;
+  color: white;
+}
