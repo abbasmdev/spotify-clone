@@ -1,8 +1,27 @@
+import { useEffect } from "react";
+import { spotifyLoginUrl } from "../../spotify";
 import styles from "./index.module.css";
 function Auth() {
   const loginBtnClickHandler = () => {
-    alert("ok");
+    window.location.href = spotifyLoginUrl;
   };
+  useEffect(() => {
+    // take auth data part received from Spotify
+    const pathName = window.location.pathname;
+    console.log(pathName);
+    if (pathName === "/auth/callback") {
+      const hashTrimed = window.location.hash.substring("1");
+      const parts = hashTrimed.split("&");
+      const data = parts.reduce((initial, part) => {
+        const key_val = part.split("=");
+        // console.log("key_val>>", key_val);
+        initial[key_val[0]] = key_val[1];
+        return initial;
+      }, {});
+
+      console.log(data);
+    }
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>
