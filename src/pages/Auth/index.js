@@ -1,12 +1,17 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { spotifyLoginUrl } from "../../spotify";
+import { authActions } from "../../store/auth/authSlice";
 import styles from "./index.module.css";
 function Auth() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const loginBtnClickHandler = () => {
     window.location.href = spotifyLoginUrl;
   };
+
   useEffect(() => {
     // take auth data part received from Spotify
     const pathName = window.location.pathname;
@@ -23,8 +28,13 @@ function Auth() {
       const access_token = data.access_token;
       const token_type = data.token_type;
       const expires_in = data.expires_in;
-      if (!access_token || !token_type || !expires_in) history.replace("/auth");
-      console.log(data);
+      if (!access_token || !token_type || !expires_in) {
+        history.replace("/auth");
+        return;
+      }
+      dispatch(
+        authActions.setLoginData({ access_token, token_type, expires_in })
+      );
     }
   }, []);
   return (

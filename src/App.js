@@ -1,9 +1,21 @@
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import styles from "./App.module.css";
+import { useSelector } from "react-redux";
+import { selectAuthAccessToken } from "./store/auth/authSlice";
+import { useEffect } from "react";
 
 function App() {
+  const authAccessToken = useSelector(selectAuthAccessToken);
+  const history = useHistory();
+  useEffect(() => {
+    if (authAccessToken) {
+      history.replace("/");
+    } else {
+      history.replace("/auth");
+    }
+  }, [authAccessToken, history]);
   return (
     <div className={styles.app}>
       <Switch>
