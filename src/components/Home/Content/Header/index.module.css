@@ -1,0 +1,22 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userInfoDropDown {
+  cursor: pointer;
+  display: flex;
+  border-radius: 40px;
+  padding: 5px 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  gap: 5px;
+}
+
+.userInfoDropDown > .avatar {
+  width: 30px;
+  height: 30px;
+}
