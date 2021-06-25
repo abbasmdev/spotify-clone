@@ -2,7 +2,10 @@ import { Home, SearchOutlined, LibraryBooksOutlined } from "@material-ui/icons";
 import Option from "./Option";
 import PlayListItem from "./PlayListItem";
 import styles from "./index.module.css";
+import { useSelector } from "react-redux";
+import { selectUserPlayLists } from "../../../store/user/userSlice";
 function Sidebar({ className }) {
+  const userPlayLists = useSelector(selectUserPlayLists);
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.logo}>
@@ -26,9 +29,9 @@ function Sidebar({ className }) {
       <div className={styles.playListContainer}>
         <strong className={styles.playListTitle}>Playlists</strong>
         <hr />
-        <PlayListItem text="Rock" />
-        <PlayListItem text="Rock" />
-        <PlayListItem text="Rock" />
+        {userPlayLists?.items?.map((item) => (
+          <PlayListItem key={item.id} text={item.name} />
+        ))}
       </div>
     </div>
   );
