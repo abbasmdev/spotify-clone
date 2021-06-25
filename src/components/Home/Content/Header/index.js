@@ -1,7 +1,10 @@
 import { Avatar, Menu, MenuItem } from "@material-ui/core";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { clearAuthLoginDataFormStorage } from "../../../../store/auth/authSlice";
 import styles from "./index.module.css";
 function Header() {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const userDropDownClickHandler = (event) => {
@@ -15,6 +18,7 @@ function Header() {
   const logoutClickHandler = (e) => {
     e.stopPropagation();
     setAnchorEl(null);
+    dispatch(clearAuthLoginDataFormStorage());
   };
   return (
     <div className={styles.header}>

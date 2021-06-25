@@ -9,6 +9,14 @@ export const setAuthAndStoreLoginData = createAsyncThunk(
   }
 );
 
+export const clearAuthLoginDataFormStorage = createAsyncThunk(
+  "auth/clearAuthLoginDataFormStorage",
+  async () => {
+    localStorage.removeItem("auth");
+    return;
+  }
+);
+
 export const getAuthLoginDataFromStorage = createAsyncThunk(
   "auth/getAuthLoginDataFromStorage",
   async () => {
@@ -47,6 +55,12 @@ const authSlice = createSlice({
     builder.addCase(getAuthLoginDataFromStorage.fulfilled, (state, action) => {
       authSlice.caseReducers.setLoginData(state, action);
     });
+    builder.addCase(
+      clearAuthLoginDataFormStorage.fulfilled,
+      (state, action) => {
+        authSlice.caseReducers.clearLoginData(state, action);
+      }
+    );
   },
 });
 
