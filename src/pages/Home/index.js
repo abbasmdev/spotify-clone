@@ -7,6 +7,8 @@ import styles from "./index.module.css";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user/userSlice";
 import { Redirect, Route, Switch } from "react-router-dom";
+import Search from "../Search";
+import Home2 from "../Home2";
 function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,10 +26,10 @@ function Home() {
               <p>playlists</p>
             </Route>
             <Route path="/search">
-              <p>search</p>
+              <Search />
             </Route>
             <Route exact path="/">
-              <p>Home</p>
+              <Home2 />
             </Route>
             <Route path="/*">
               <Redirect to="/" />
