@@ -1,0 +1,13 @@
+.container {
+}
+
+.title {
+  font-weight: bold;
+}
+.playlists {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow: auto;
+  padding: 10px 0px;
+}
