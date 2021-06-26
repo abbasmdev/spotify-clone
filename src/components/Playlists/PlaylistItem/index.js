@@ -1,14 +1,11 @@
 import { IconButton } from "@material-ui/core";
 import { PlayArrow } from "@material-ui/icons";
 import styles from "./index.module.css";
-function PlayListItem({ title, description, onClick, onPlayClick }) {
+function PlayListItem({ title, description, onClick, onPlayClick, imageSrc }) {
   return (
     <div onClick={onClick} className={styles.container}>
       <div className={styles.cover}>
-        <img
-          src="https://i.scdn.co/image/ab67706f000000028623104b16ed3c2ec24282be"
-          alt=""
-        />
+        <img src={imageSrc} alt={title} />
         <IconButton
           className={styles.playButton}
           color="primary"

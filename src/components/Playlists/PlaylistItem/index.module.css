@@ -26,6 +26,10 @@
   position: relative;
   width: 100%;
   height: 100%;
+  padding-bottom: 100%;
+  background: #eee;
+  height: 0;
+  position: relative;
 }
 .cover > .playButton {
   opacity: 0;
@@ -43,6 +47,9 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+
+  display: block;
+  position: absolute;
 }
 
 .descriptionContainer {
