@@ -5,6 +5,8 @@ import Playlists from "../../components/Playlists";
 function Home2() {
   const [featurePlaylists, setFeaturePlaylists] = useState(null);
   const [toplistsPlaylists, setToplistsPlaylists] = useState(null);
+  const [workoutPlaylists, setWorkoutPlaylists] = useState(null);
+  const [chillPlaylists, setChillPlaylists] = useState(null);
 
   const fetchFeaturePlaylists = useCallback(() => {
     spotifyInstance
@@ -14,6 +16,7 @@ function Home2() {
       })
       .catch((e) => console.log(e));
   }, []);
+
   const fetchToplistsPlaylists = useCallback(() => {
     spotifyInstance
       .getCategoryPlaylists("toplists")
@@ -22,10 +25,36 @@ function Home2() {
       })
       .catch((e) => console.log(e));
   }, []);
+
+  const fetchWorkoutPlaylists = useCallback(() => {
+    spotifyInstance
+      .getCategoryPlaylists("workout")
+      .then((pls) => {
+        setWorkoutPlaylists(pls);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  const fetchChillPlaylists = useCallback(() => {
+    spotifyInstance
+      .getCategoryPlaylists("chill")
+      .then((pls) => {
+        setChillPlaylists(pls);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
   useEffect(() => {
     fetchFeaturePlaylists();
     fetchToplistsPlaylists();
-  }, [fetchFeaturePlaylists, fetchToplistsPlaylists]);
+    fetchWorkoutPlaylists();
+    fetchChillPlaylists();
+  }, [
+    fetchFeaturePlaylists,
+    fetchToplistsPlaylists,
+    fetchWorkoutPlaylists,
+    fetchChillPlaylists,
+  ]);
 
   return (
     <div className={styles.container}>
@@ -41,6 +70,20 @@ function Home2() {
           title="Top lists Playlists"
           subtitle={toplistsPlaylists?.message}
           playlistsData={toplistsPlaylists?.playlists}
+        />
+      )}
+      {workoutPlaylists && (
+        <Playlists
+          title="Workout Playlists"
+          subtitle={workoutPlaylists?.message}
+          playlistsData={workoutPlaylists?.playlists}
+        />
+      )}
+      {chillPlaylists && (
+        <Playlists
+          title="Chill Playlists"
+          subtitle={chillPlaylists?.message}
+          playlistsData={chillPlaylists?.playlists}
         />
       )}
       {/* <Playlists title="Featured Playlists" subtitle="Editor's picks" />
