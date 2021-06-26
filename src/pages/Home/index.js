@@ -6,6 +6,7 @@ import Content from "../../components/Home/Content";
 import styles from "./index.module.css";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user/userSlice";
+import { Redirect, Route, Switch } from "react-router-dom";
 function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,7 +18,22 @@ function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <Sidebar className={styles.sidebar} />
-        <Content className={styles.content} />
+        <Content className={styles.content}>
+          <Switch>
+            <Route path="/playlists">
+              <p>playlists</p>
+            </Route>
+            <Route path="/search">
+              <p>search</p>
+            </Route>
+            <Route exact path="/">
+              <p>Home</p>
+            </Route>
+            <Route path="/*">
+              <Redirect to="/" />
+            </Route>
+          </Switch>
+        </Content>
       </main>
       <Footer />
     </div>

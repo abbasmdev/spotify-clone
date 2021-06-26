@@ -4,8 +4,19 @@ import PlayListItem from "./PlayListItem";
 import styles from "./index.module.css";
 import { useSelector } from "react-redux";
 import { selectUserPlayLists } from "../../../store/user/userSlice";
+import { useHistory, useLocation } from "react-router-dom";
 function Sidebar({ className }) {
   const userPlayLists = useSelector(selectUserPlayLists);
+  const history = useHistory();
+  const location = useLocation();
+  const searchClickHandler = () => {
+    history.push("/search");
+  };
+
+  const homeClickHandler = () => {
+    history.push("/");
+  };
+
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.logo}>
@@ -18,8 +29,18 @@ function Sidebar({ className }) {
         </svg>
       </div>
       <div>
-        <Option active label="Home" onClick={null} Icon={Home} />
-        <Option label="Search" onClick={null} Icon={SearchOutlined} />
+        <Option
+          active={location.pathname === "/"}
+          label="Home"
+          onClick={homeClickHandler}
+          Icon={Home}
+        />
+        <Option
+          active={location.pathname === "/search"}
+          onClick={searchClickHandler}
+          label="Search"
+          Icon={SearchOutlined}
+        />
         <Option
           label="Your Library"
           onClick={null}

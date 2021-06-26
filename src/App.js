@@ -14,13 +14,14 @@ function App() {
   const history = useHistory();
   const dispatch = useDispatch();
   const authAccessToken = useSelector(selectAuthAccessToken);
+
   useEffect(() => {
     if (authAccessToken) {
       spotifyInstance.setAccessToken(authAccessToken);
       spotifyInstance.getMe().then((s) => console.log(s));
       history.replace("/");
     } else {
-      history.replace("/auth");
+      history.push("/auth");
     }
   }, [authAccessToken, history]);
 
@@ -33,7 +34,7 @@ function App() {
         <Route path="/auth">
           <Auth />
         </Route>
-        <Route exact path="/">
+        <Route path="/">
           <Home />
         </Route>
         <Route path="*">
