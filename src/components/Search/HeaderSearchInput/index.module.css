@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: gray;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.container > input {
+  border: none;
+  outline: none;
+  padding: 10px;
+}
