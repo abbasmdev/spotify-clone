@@ -2,8 +2,10 @@
   background-color: rgba(83, 83, 83, 0.8);
   position: sticky;
   top: 0;
+  align-items: center;
   padding: 10px;
   display: flex;
+  gap: 10px;
   justify-content: space-between;
   z-index: 100;
 }
@@ -21,4 +23,23 @@
 .userInfoDropDown > .avatar {
   width: 30px;
   height: 30px;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navActions > button {
+  cursor: pointer !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+}
+.navActions > button:disabled {
+  background-color: rgba(109, 109, 109, 0.7) !important;
+  color: rgb(88, 88, 88) !important;
+}
+
+.headerCenter {
+  flex-grow: 1;
 }

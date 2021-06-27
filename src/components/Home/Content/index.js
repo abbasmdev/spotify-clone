@@ -1,9 +1,9 @@
 import Header from "./Header";
 import styles from "./index.module.css";
-function Content({ className, children }) {
+function Content({ className, children, headerChildren }) {
   return (
     <div className={`${styles.container} ${className}`}>
-      <Header />
+      <Header>{headerChildren}</Header>
       <main>{children}</main>
     </div>
   );

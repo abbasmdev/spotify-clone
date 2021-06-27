@@ -1,9 +1,13 @@
-import { Avatar, Menu, MenuItem } from "@material-ui/core";
+import { Avatar, IconButton, Menu, MenuItem } from "@material-ui/core";
+import {
+  ArrowBackIosOutlined as ArrowBackIosOutlinedIcon,
+  ArrowForwardIosOutlined as ArrowForwardIosOutlinedIcon,
+} from "@material-ui/icons";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { clearAuthLoginDataFormStorage } from "../../../../store/auth/authSlice";
 import styles from "./index.module.css";
-function Header() {
+function Header({ children }) {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -22,7 +26,17 @@ function Header() {
   };
   return (
     <div className={styles.header}>
-      <div className={styles.headerLeft}></div>
+      <div className={styles.headerLeft}>
+        <div className={styles.navActions}>
+          <IconButton size="small" disabled>
+            <ArrowBackIosOutlinedIcon />
+          </IconButton>
+          <IconButton size="small" disabled>
+            <ArrowForwardIosOutlinedIcon />
+          </IconButton>
+        </div>
+      </div>
+      <div className={styles.headerCenter}>{children}</div>
       <div className={styles.headerRight}>
         <div
           aria-controls="simple-menu"
