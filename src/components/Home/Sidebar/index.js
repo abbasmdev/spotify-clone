@@ -19,6 +19,10 @@ function Sidebar({ className }) {
     history.push("/");
   };
 
+  const playListItemClickHandler = (item) => {
+    history.push(`/playlist/${item?.id}`);
+  };
+
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.logo}>
@@ -54,7 +58,11 @@ function Sidebar({ className }) {
         <hr />
         <div className={styles.playListItems}>
           {userPlayLists?.items?.map((item) => (
-            <PlayListItem key={item.id} text={item.name} />
+            <PlayListItem
+              onClick={() => playListItemClickHandler(item)}
+              key={item.id}
+              text={item.name}
+            />
           ))}
         </div>
       </div>
