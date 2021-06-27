@@ -16,6 +16,7 @@ import {
 import Search from "../Search";
 import Home2 from "../Home2";
 import HeaderSearchInput from "../../components/Search/HeaderSearchInput";
+import Genre from "../Genre";
 function Home() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function Home() {
           <Switch>
             <Route path="/playlists">
               <p>playlists</p>
+            </Route>
+            <Route path="/genre/:id">
+              <Genre />
             </Route>
             <Route path="/search">
               <Search />
