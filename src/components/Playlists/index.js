@@ -6,7 +6,7 @@ function Playlists({ title, subtitle, playlistsData }) {
       <h3 className={styles.title}>{title}</h3>
       <h5>{subtitle}</h5>
       <div className={styles.playlists}>
-        {playlistsData &&
+        {playlistsData?.items?.length > 0 ? (
           playlistsData?.items?.map((item) => (
             <PlayListItem
               key={item?.id}
@@ -16,7 +16,12 @@ function Playlists({ title, subtitle, playlistsData }) {
               onClick={() => alert("on playlist")}
               onPlayClick={() => alert("onPlayClick")}
             />
-          ))}
+          ))
+        ) : (
+          <div className={styles.noPlaylist}>
+            <p>No Playlist</p>
+          </div>
+        )}
       </div>
     </div>
   );
