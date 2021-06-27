@@ -18,6 +18,7 @@ import Home2 from "../Home2";
 import HeaderSearchInput from "../../components/Search/HeaderSearchInput";
 import Genre from "../Genre";
 import YourLibrary from "../YourLibrary";
+import PlayList from "../Playlist";
 function Home() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -47,8 +48,8 @@ function Home() {
         <Sidebar className={styles.sidebar} />
         <Content className={styles.content} headerChildren={headerChildren}>
           <Switch>
-            <Route path="/playlists">
-              <p>playlists</p>
+            <Route path="/playlist/:id">
+              <PlayList />
             </Route>
             <Route path="/genre/:id">
               <Genre />
