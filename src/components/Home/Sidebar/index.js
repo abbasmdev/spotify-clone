@@ -12,7 +12,9 @@ function Sidebar({ className }) {
   const searchClickHandler = () => {
     history.push("/search");
   };
-
+  const yourLibraryClickHandler = () => {
+    history.push("/your-library");
+  };
   const homeClickHandler = () => {
     history.push("/");
   };
@@ -43,7 +45,7 @@ function Sidebar({ className }) {
         />
         <Option
           label="Your Library"
-          onClick={null}
+          onClick={yourLibraryClickHandler}
           Icon={LibraryBooksOutlined}
         />
       </div>

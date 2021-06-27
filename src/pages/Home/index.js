@@ -17,6 +17,7 @@ import Search from "../Search";
 import Home2 from "../Home2";
 import HeaderSearchInput from "../../components/Search/HeaderSearchInput";
 import Genre from "../Genre";
+import YourLibrary from "../YourLibrary";
 function Home() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ function Home() {
             </Route>
             <Route path="/search">
               <Search />
+            </Route>
+            <Route path="/your-library">
+              <YourLibrary />
             </Route>
             <Route exact path="/">
               <Home2 />
