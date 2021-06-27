@@ -4,7 +4,7 @@
 .header {
   padding-left: 20px;
   width: 100%;
-  height: 150px;
+  height: 250px;
   background: rgb(233, 158, 106);
   background: linear-gradient(
     140deg,
@@ -16,6 +16,9 @@
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 40px;
+}
+.header > h1 {
+  text-transform: uppercase;
 }
 
 .main {
