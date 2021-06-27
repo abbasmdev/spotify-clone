@@ -4,7 +4,7 @@ function Content({ className, children, headerChildren }) {
   return (
     <div className={`${styles.container} ${className}`}>
       <Header>{headerChildren}</Header>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }

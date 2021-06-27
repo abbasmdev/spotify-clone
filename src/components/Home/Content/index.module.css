@@ -2,4 +2,9 @@
   background: linear-gradient(rgb(74, 73, 78), black);
   color: white;
   overflow: auto;
+
+  position: relative;
+}
+.main {
+  margin-top: -60px;
 }
