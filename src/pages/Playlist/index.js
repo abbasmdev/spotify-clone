@@ -1,3 +1,9 @@
+import { IconButton } from "@material-ui/core";
+import {
+  FavoriteBorderOutlined,
+  MoreHoriz,
+  PlayArrow,
+} from "@material-ui/icons";
 import { useCallback, useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Header from "../../components/Playlist/Header";
@@ -23,6 +29,22 @@ function PlayList() {
   return (
     <div className={styles.container}>
       <Header playlistData={playlistData} />
+      <main className={styles.main}>
+        <div className={styles.bgGradient}></div>
+        {/* Actions */}
+        <div className={styles.actions}>
+          <IconButton style={{ backgroundColor: "#1db954" }}>
+            <PlayArrow style={{ color: "white" }} />
+          </IconButton>
+          <IconButton>
+            <FavoriteBorderOutlined style={{ color: "white" }} />
+          </IconButton>
+          <IconButton>
+            <MoreHoriz style={{ color: "white" }} />
+          </IconButton>
+        </div>
+        {/* Tracks list */}
+      </main>
     </div>
   );
 }

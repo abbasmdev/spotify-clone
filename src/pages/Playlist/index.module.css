@@ -1,2 +1,28 @@
 .container {
+  min-height: 100vh;
+  background: #121212;
+}
+
+.main {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+.bgGradient {
+  height: 200px;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: rgb(44, 9, 18);
+  background: linear-gradient(
+    180deg,
+    rgb(19, 4, 8) 0%,
+    rgba(18, 18, 18, 0.16395864106351554) 100%
+  );
+}
+.actions {
+  display: flex;
+  gap: 10px;
 }
