@@ -2,6 +2,10 @@ import styles from "./index.module.css";
 import Item from "./Item";
 function TracksList({ tracks }) {
   const hasTrack = tracks?.items?.length > 0;
+
+  const trackPlayPauseHandler = (id) => {
+    alert(id);
+  };
   return (
     <div className={styles.tracksList}>
       {!hasTrack ? (
@@ -34,7 +38,12 @@ function TracksList({ tracks }) {
           </div>
           <div className={styles.tracksListItems}>
             {tracks?.items?.map((i, index) => (
-              <Item key={i?.track?.id} item={i} index={index + 1} />
+              <Item
+                onPlayPause={() => trackPlayPauseHandler(i?.track?.id)}
+                key={i?.track?.id}
+                item={i}
+                index={index + 1}
+              />
             ))}
           </div>
         </>

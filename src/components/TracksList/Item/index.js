@@ -10,12 +10,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { msToMinutesAndSecondsFormated } from "../../../utils/convert";
-function Item({ item, index }) {
+function Item({ item, index, onPlayPause }) {
+  const playPauseBtnClickHandler = (e) => {
+    e.stopPropagation();
+    onPlayPause && onPlayPause();
+  };
   return (
     <div className={styles.tracksListItem}>
       <div className={styles.colItem} style={{ justifyContent: "center" }}>
         <span className={styles.trackIndex}>{index}</span>
-        <IconButton className={styles.playPauseButton} size="small">
+        <IconButton
+          onClick={playPauseBtnClickHandler}
+          className={styles.playPauseButton}
+          size="small"
+        >
           <PlayArrow style={{ color: "white" }} />
         </IconButton>
       </div>
