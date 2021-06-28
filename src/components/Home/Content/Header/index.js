@@ -7,7 +7,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { clearAuthLoginDataFormStorage } from "../../../../store/auth/authSlice";
 import styles from "./index.module.css";
-function Header({ children }) {
+function Header({ children, pxFromTop }) {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -25,7 +25,14 @@ function Header({ children }) {
     dispatch(clearAuthLoginDataFormStorage());
   };
   return (
-    <div className={styles.header}>
+    <div
+      className={styles.header}
+      style={{
+        backgroundColor: `rgb(53, 53, 53, ${
+          pxFromTop > 60 ? 1 : pxFromTop / 60
+        })`,
+      }}
+    >
       <div className={styles.headerLeft}>
         <div className={styles.navActions}>
           <IconButton size="small" disabled>
