@@ -1,0 +1,56 @@
+.container {
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 300px;
+  background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%),
+    rgb(72, 8, 24);
+  overflow: hidden;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.cover {
+  min-width: 170px;
+  min-height: 170px;
+  width: 170px;
+  height: 170px;
+}
+.cover > img {
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.detail {
+  justify-content: flex-end;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.detail > .type {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.detail > .name {
+  font-weight: 900;
+}
+
+.detail > .ownerTotalSong {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+}
+.detail > .ownerTotalSong .totalSong::before {
+  content: "•";
+  margin: 5px;
+}
+.detail > .ownerTotalSong .totalSong {
+  color: hsla(0, 0%, 100%, 0.7);
+  font-weight: bold;
+}
