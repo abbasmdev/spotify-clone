@@ -1,6 +1,12 @@
 import PlayListItem from "./PlaylistItem";
 import styles from "./index.module.css";
+import { useHistory } from "react-router-dom";
 function Playlists({ title, subtitle, playlistsData }) {
+  const history = useHistory();
+
+  const playlistItemClickHandler = (id) => {
+    history.push(`/playlist/${id}`);
+  };
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
@@ -13,7 +19,7 @@ function Playlists({ title, subtitle, playlistsData }) {
               title={item?.name}
               description={item?.description}
               imageSrc={item?.images?.[0]?.url}
-              onClick={() => alert("on playlist")}
+              onClick={() => playlistItemClickHandler(item?.id)}
               onPlayClick={() => alert("onPlayClick")}
             />
           ))
