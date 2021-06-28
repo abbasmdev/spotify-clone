@@ -1,0 +1,103 @@
+.tracksListItem {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  height: 56px;
+  position: relative;
+
+  padding: 0 16px;
+  grid-gap: 16px;
+  display: grid;
+  grid-template-columns: [index] 32px [first] 6fr [var1] 4fr [last] minmax(
+      120px,
+      1fr
+    );
+}
+.tracksListItem:hover,
+.tracksListItem:active {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.colItem {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.colItem > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.itemDateAdded {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .tracksListItem {
+    grid-template-columns: [index] 32px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+        120px,
+        1fr
+      );
+  }
+  .itemDateAdded {
+    display: initial;
+    display: flex;
+
+    justify-content: center;
+  }
+}
+
+.timeAndActions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.actionFav,
+.actionMore,
+.playPauseButton {
+  display: none !important;
+}
+.tracksListItem:hover .actionFav {
+  display: initial !important;
+}
+.tracksListItem:hover .actionMore {
+  display: initial !important;
+}
+.tracksListItem:hover .playPauseButton {
+  display: initial !important;
+}
+.tracksListItem:hover .trackIndex {
+  display: none;
+}
+.nameAndArtists {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+.trackName {
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.artistsLinks {
+  color: rgb(179, 179, 179);
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: flex;
+  gap: 3px;
+}
+.artistsLinks > a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.artistsLinks > a:hover {
+  text-decoration: underline;
+}

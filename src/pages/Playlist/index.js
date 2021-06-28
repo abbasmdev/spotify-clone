@@ -7,6 +7,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Header from "../../components/Playlist/Header";
+import TracksList from "../../components/TracksList";
 import { spotifyInstance } from "../../spotify";
 import styles from "./index.module.css";
 function PlayList() {
@@ -44,6 +45,7 @@ function PlayList() {
           </IconButton>
         </div>
         {/* Tracks list */}
+        <TracksList tracks={playlistData?.tracks} />
       </main>
     </div>
   );

@@ -1,0 +1,46 @@
+.tracksList {
+  margin-top: 30px;
+}
+.tracksListHeader {
+  background: #181818;
+  position: sticky;
+  top: 60px;
+  z-index: 2;
+  border-bottom: 2px solid hsla(0, 0%, 100%, 0.1);
+  color: #b3b3b3;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 0 16px;
+  grid-gap: 16px;
+  display: grid;
+  place-content: center;
+
+  grid-template-columns: [index] 32px [first] 6fr [var1] 4fr [last] minmax(
+      120px,
+      1fr
+    );
+}
+
+.headerDateAdded {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .tracksListHeader {
+    grid-template-columns: [index] 32px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+        120px,
+        1fr
+      );
+  }
+  .headerDateAdded {
+    display: initial;
+  }
+}
+
+.tracksListHeader span {
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  white-space: unset;
+  word-break: break-all;
+}
