@@ -51,6 +51,11 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.trackPlayingequaliser > img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
 
 .actionFav,
 .actionMore,
@@ -69,6 +74,10 @@
 .tracksListItem:hover .trackIndex {
   display: none;
 }
+.tracksListItem:hover .trackPlayingequaliser {
+  display: none;
+}
+
 .nameAndArtists {
   display: flex;
   flex-direction: column;

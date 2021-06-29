@@ -1,11 +1,17 @@
-import { useDispatch } from "react-redux";
-import { setTrackAndPlay } from "../../store/player/playerSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  PLAY_STATE,
+  selectCurrentTrack,
+  selectPlayerPlayState,
+  setTrackAndPlay,
+} from "../../store/player/playerSlice";
 import styles from "./index.module.css";
 import Item from "./Item";
 function TracksList({ tracks }) {
   const dispatch = useDispatch();
   const hasTrack = tracks?.items?.length > 0;
-
+  const currentTrack = useSelector(selectCurrentTrack);
+  const playerPlayState = useSelector(selectPlayerPlayState);
   const trackPlayPauseHandler = (track) => {
     dispatch(setTrackAndPlay(track));
   };
@@ -42,6 +48,11 @@ function TracksList({ tracks }) {
           <div className={styles.tracksListItems}>
             {tracks?.items?.map((i, index) => (
               <Item
+                currentTrack={currentTrack?.id === i?.track.id}
+                isPlaying={
+                  currentTrack?.id === i?.track.id &&
+                  playerPlayState === PLAY_STATE.playing
+                }
                 onPlayPause={() => trackPlayPauseHandler(i?.track)}
                 key={i?.track?.id}
                 item={i}

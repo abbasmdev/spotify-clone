@@ -10,7 +10,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { msToMinutesAndSecondsFormated } from "../../../utils/convert";
-function Item({ item, index, onPlayPause }) {
+function Item({ item, index, onPlayPause, currentTrack, isPlaying }) {
   const playPauseBtnClickHandler = (e) => {
     e.stopPropagation();
     onPlayPause && onPlayPause();
@@ -18,7 +18,23 @@ function Item({ item, index, onPlayPause }) {
   return (
     <div className={styles.tracksListItem}>
       <div className={styles.colItem} style={{ justifyContent: "center" }}>
-        <span className={styles.trackIndex}>{index}</span>
+        {!isPlaying && (
+          <span
+            style={{ color: currentTrack ? "#1db954" : "white" }}
+            className={styles.trackIndex}
+          >
+            {index}
+          </span>
+        )}
+        {isPlaying && (
+          <span className={styles.trackPlayingequaliser}>
+            <img
+              src="/images/equaliser-animated-green.gif"
+              alt="playing equaliser"
+            />
+          </span>
+        )}
+
         <IconButton
           onClick={playPauseBtnClickHandler}
           className={styles.playPauseButton}
@@ -28,7 +44,12 @@ function Item({ item, index, onPlayPause }) {
         </IconButton>
       </div>
       <div className={`${styles.colItem} ${styles.nameAndArtists}`}>
-        <p className={styles.trackName}>{item?.track?.name}</p>
+        <p
+          style={{ color: currentTrack ? "#1db954" : "inherit" }}
+          className={styles.trackName}
+        >
+          {item?.track?.name}
+        </p>
         {item?.track?.artists?.length > 0 && (
           <span className={styles.artistsLinks}>
             {item?.track?.artists.map((artist, index) => (

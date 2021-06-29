@@ -12,6 +12,9 @@ export const setTrackAndPlay = createAsyncThunk(
   "player/setTrackAndPlay",
   async (track) => {
     try {
+      if (!track.preview_url) {
+        throw new Error("no preview url");
+      }
       audioPlayer.src = track?.preview_url;
 
       await audioPlayer?.play();
@@ -71,6 +74,7 @@ const playerSlice = createSlice({
     builder.addCase(setTrackAndPlay.fulfilled, (state, action) => {
       playerSlice.caseReducers.setCurrentTrack(state, action);
     });
+
     builder.addCase(setPlayerVolume.fulfilled, (state, action) => {
       playerSlice.caseReducers.setVolum(state, action);
     });
