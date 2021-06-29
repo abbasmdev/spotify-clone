@@ -4,11 +4,15 @@ import {
   ArrowForwardIosOutlined as ArrowForwardIosOutlinedIcon,
 } from "@material-ui/icons";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { clearAuthLoginDataFormStorage } from "../../../../store/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearAuthLoginDataFormStorage,
+  selectAuthUserInfo,
+} from "../../../../store/auth/authSlice";
 import styles from "./index.module.css";
 function Header({ children, pxFromTop }) {
   const dispatch = useDispatch();
+  const userInfo = useSelector(selectAuthUserInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const userDropDownClickHandler = (event) => {
@@ -51,8 +55,10 @@ function Header({ children, pxFromTop }) {
           onClick={userDropDownClickHandler}
           className={styles.userInfoDropDown}
         >
-          <Avatar className={styles.avatar} />
-          <span>Abbas</span>
+          <Avatar className={styles.avatar} src={userInfo?.images?.[0]?.url}>
+            {!userInfo?.images?.[0]?.url && userInfo?.display_name?.[0]}
+          </Avatar>
+          <span>{userInfo?.display_name}</span>
 
           <Menu
             id="simple-menu"

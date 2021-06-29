@@ -3,6 +3,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  authActions,
   getAuthLoginDataFromStorage,
   selectAuthAccessToken,
 } from "./store/auth/authSlice";
@@ -18,12 +19,14 @@ function App() {
   useEffect(() => {
     if (authAccessToken) {
       spotifyInstance.setAccessToken(authAccessToken);
-      spotifyInstance.getMe().then((s) => console.log(s));
-      history.replace("/");
+      spotifyInstance.getMe().then((res) => {
+        dispatch(authActions.setUserInfo(res));
+        history.replace("/");
+      });
     } else {
       history.push("/auth");
     }
-  }, [authAccessToken, history]);
+  }, [authAccessToken, history, dispatch]);
 
   useEffect(() => {
     dispatch(getAuthLoginDataFromStorage());

@@ -32,6 +32,7 @@ export const getAuthLoginDataFromStorage = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    userInfo: null,
     access_token: null,
     token_type: null,
     expires_in: null,
@@ -46,6 +47,9 @@ const authSlice = createSlice({
       state.access_token = null;
       state.token_type = null;
       state.expires_in = null;
+    },
+    setUserInfo(state, action) {
+      state.userInfo = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -65,6 +69,7 @@ const authSlice = createSlice({
 });
 
 export const selectAuthAccessToken = (state) => state.auth.access_token;
+export const selectAuthUserInfo = (state) => state.auth.userInfo;
 export const authActions = authSlice.actions;
 
 export default authSlice.reducer;
