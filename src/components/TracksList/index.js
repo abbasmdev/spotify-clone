@@ -1,10 +1,13 @@
+import { useDispatch } from "react-redux";
+import { setTrackAndPlay } from "../../store/player/playerSlice";
 import styles from "./index.module.css";
 import Item from "./Item";
 function TracksList({ tracks }) {
+  const dispatch = useDispatch();
   const hasTrack = tracks?.items?.length > 0;
 
-  const trackPlayPauseHandler = (id) => {
-    alert(id);
+  const trackPlayPauseHandler = (track) => {
+    dispatch(setTrackAndPlay(track));
   };
   return (
     <div className={styles.tracksList}>
@@ -39,7 +42,7 @@ function TracksList({ tracks }) {
           <div className={styles.tracksListItems}>
             {tracks?.items?.map((i, index) => (
               <Item
-                onPlayPause={() => trackPlayPauseHandler(i?.track?.id)}
+                onPlayPause={() => trackPlayPauseHandler(i?.track)}
                 key={i?.track?.id}
                 item={i}
                 index={index + 1}

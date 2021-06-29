@@ -7,6 +7,7 @@ function Playlists({ title, subtitle, playlistsData }) {
   const playlistItemClickHandler = (id) => {
     history.push(`/playlist/${id}`);
   };
+  console.log("playlistsData>>", playlistsData);
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
