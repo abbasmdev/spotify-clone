@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# About this project
+This project is Spotify clone app using React.js, Redux, Spotify API, Material-UI, Redux-toolkit, and much more.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Before using source code
+Make sure replace values of file in path **src/spotify/index.js** with your spotify values that 
+got from Spotify developer page.
 
 ## Available Scripts
 
